@@ -20,14 +20,9 @@ app.use(morgan("common"));
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.status(204); // No content
-});
 app.use("/api/auth", auth);
 app.use("/api/users", users);
-app.get("/favicon.ico", (req, res) => {
-  res.status(204); // No content
-});
+
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
