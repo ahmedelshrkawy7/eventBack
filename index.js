@@ -11,41 +11,44 @@ const cors = require("cors");
 
 const app = express();
 
-////  middlee ware
+// Middleware
 dotenv.config();
 
-////  moddlee ware
 app.use(helmet());
 app.use(morgan("common"));
 app.use(express.json());
 app.use(cors());
 
+// Routes
 app.use("/api/auth", auth);
 app.use("/api/users", users);
 
-app.all("*", (req, res, next) => {
+// Handle 404 errors
+app.use((req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
+// Global Error Handling Middleware
 app.use((err, req, res, next) => {
   console.error(err.stack); // Log the error for debugging purposes
 
-  // Send a generic error response to the client
   res.status(err.status || 500).json({
     message: err.message || "Internal Server Error",
     status: err.status || 500,
     stack: process.env.NODE_ENV === "development" ? err.stack : {}, // Hide stack trace in production
   });
 });
-const password = process.env.DATABASE_PASSWORD;
 
+// Database connection
+const password = process.env.DATABASE_PASSWORD;
 const databaseUri = process.env.DATABASE.replace("<password>", password);
 
 mongoose
   .connect(databaseUri)
   .then(() => {
+    console.log("Connected to MongoDB");
     app.listen(8800, () => {
-      console.log("backend server is fired");
+      console.log("Backend server is running on port 8800");
     });
   })
   .catch((err) => {
