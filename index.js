@@ -41,7 +41,7 @@ const password = process.env.DATABASE_PASSWORD;
 const databaseUri = process.env.DATABASE.replace("<password>", password);
 
 mongoose
-  .connect(databaseUri, { useUnifiedTopology: true })
+  .connect(process.env.DATABASE)
   .then(() => {
     app.listen(8800, () => {
       console.log("backend server is fired");
