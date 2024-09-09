@@ -21,7 +21,7 @@ const eventUserSchema = new mongoose.Schema({
       message: "Email cannot be empty", // Custom error message
     },
   },
-  phone: { type: String},
+  phone: { type: String },
   companyName: {
     type: String,
   },
