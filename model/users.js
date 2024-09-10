@@ -21,11 +21,12 @@ const eventUserSchema = new mongoose.Schema({
       message: "Email cannot be empty", // Custom error message
     },
   },
-  phone: { type: String },
+  phone: { type: String, default: "N/A" },
   companyName: {
     type: String,
+    default: "N/A",
   },
-  jobTitle: { type: String },
+  jobTitle: { type: String, default: "N/A" },
 });
 
 const EventUser = mongoose.model("EventUser", eventUserSchema);
