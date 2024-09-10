@@ -3,18 +3,18 @@ const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
   service: "gmail", // You can use other services like Yahoo, Outlook, etc.
   auth: {
-    user: "ahmadelshrkawy232@gmail.com", // Replace with your email
-    pass: "monf bmap rany aukn", // Replace with your email password (or use an app password)
+    user: "events.zak.solutions@gmail.com", // Replace with your email
+    pass: "xdgc dxes sacb fwdb", // Replace with your email password (or use an app password)
   },
 });
 
 const sendConfirmationEmail = (userEmail, confirmationLink) => {
   const mailOptions = {
     from: "ahmadelshrkawy232@gamil.com", // Sender's email address
-    to: userEmail, // Recipient's email address
+    to: userEmail.email, // Recipient's email address
     subject: "Email Confirmation",
     html: `
-      <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -26,22 +26,22 @@ const sendConfirmationEmail = (userEmail, confirmationLink) => {
         margin: 0;
         padding: 0;
         width: 100% !important;
-        background-color: #f4f4f4;
+        background-color: #02bb5b; /* Full-page background green */
       }
 
       .email-container {
-        max-width: 600px;
-        margin: 0 auto;
+        max-width: 85%;
+        margin: 40px auto; /* Added margin for better spacing */
         background-color: #ffffff;
-        border: 1px solid #dddddd;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
       }
 
-      .email-header,
-      .email-footer {
-        background-color: #04172a;
-        color: #ffffff;
+      .email-header {
         text-align: center;
-        padding: 20px;
+        color: #000000;
+        padding: 0;
       }
 
       .email-header img {
@@ -49,168 +49,127 @@ const sendConfirmationEmail = (userEmail, confirmationLink) => {
         height: auto;
       }
 
-      .email-body {
-        padding: 20px;
-        text-align: center;
-      }
-
-      .email-body img {
+      .event-background {
         width: 100%;
         height: auto;
-        max-width: 100%;
         display: block;
-        margin: 0 auto;
       }
 
-      .email-body h1 {
-        font-size: 24px;
-        color: #333333;
+      .user-info {
+        margin-top: 20px;
+        color: #000000;
       }
 
-      .email-body p {
-        font-size: 16px;
-        color: #555555;
-        line-height: 1.5;
-      }
-
-      .agenda-table {
+      .user-info table {
         width: 100%;
-        border-collapse: collapse;
-        margin: 20px 0;
       }
 
-      .agenda-table th,
-      .agenda-table td {
-        padding: 12px;
-        border: 1px solid #dddddd;
-        text-align: left;
+      .user-info td {
+        padding: 10px;
+        vertical-align: middle;
       }
 
-      .agenda-table th {
-        background-color: #f7f7f7;
+      .user-info img {
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+        margin-right: 10px;
       }
 
-      .button {
-        background-color: #02bb5b;
-        color: #ffffff;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 5px;
-        display: inline-block;
-      }
-
-      .footer-text {
-        font-size: 12px;
-        color: #ffffff;
+      .email-footer {
         text-align: center;
+        color: #ffffff;
+        padding: 20px;
+        background-color: #02bb5b;
+        font-size: 14px;
       }
 
       /* Responsive styles */
       @media only screen and (max-width: 600px) {
         .email-container {
           width: 100% !important;
-        }
-
-        .email-body {
-          padding: 10px !important;
-        }
-
-        .email-body h1 {
-          font-size: 20px;
-        }
-
-        .email-body p {
-          font-size: 14px;
+          padding: 10px;
         }
       }
     </style>
   </head>
   <body>
     <div class="email-container">
+      <!-- Header Section -->
       <div class="email-header">
         <img
           src="https://events.alexondev.net/assets/SiteLogo-8mHirAuN.png"
           alt="Event Logo"
         />
       </div>
+      <!-- Event Background Image -->
+      <img
+        src="https://events.alexondev.net/assets/back-Cgf2QjYU.jpg"
+        alt="Event Background"
+        class="event-background"
+      />
 
-      <div class="email-body">
-        <img
-          src="https://events.alexondev.net/assets/back-Cgf2QjYU.jpg"
-          alt="Event Background"
-          style="width: 100%; height: auto"
-        />
-        <h1>Think AI & Beyond:<br />The Future Intelligence</h1>
-        <p>
-          We are delighted to invite you to our upcoming event, "Think AI &
-          Beyond: The Future Intelligence", set to take place on 30th September
-          2024 at Mövenpick Hotel & Resort Al Bida’a. Join us for an engaging
-          day filled with insightful discussions, cutting-edge presentations,
-          and interactive sessions.
-        </p>
-        <h5>21/09/2024 - 09:00 pm</h5>
-
-        <div>
-          <h2>Event Agenda</h2>
-          <table class="agenda-table">
-            <tr>
-              <th>From</th>
-              <th>To</th>
-              <th>Activity</th>
-            </tr>
-            <tr>
-              <td>9:30 am</td>
-              <td>10:00 am</td>
-              <td>Arrival, Networking and Welcome Coffee</td>
-            </tr>
-            <tr>
-              <td>10:00 am</td>
-              <td>10:15 am</td>
-              <td>Welcome Note</td>
-            </tr>
-            <tr>
-              <td>10:15 am</td>
-              <td>11:30 am</td>
-              <td>Transformative Solutions for the Digital Age</td>
-            </tr>
-            <tr>
-              <td>11:30 am</td>
-              <td>12:00 pm</td>
-              <td>Coffee Break</td>
-            </tr>
-            <tr>
-              <td>12:00 pm</td>
-              <td>12:45 pm</td>
-              <td>Optimizing Service Excellence in the Digital Era</td>
-            </tr>
-            <tr>
-              <td>12:45 pm</td>
-              <td>1:00 pm</td>
-              <td>Luck Draw</td>
-            </tr>
-            <tr>
-              <td>1:00 pm</td>
-              <td>Onwards</td>
-              <td>Lunch</td>
-            </tr>
-          </table>
-
-          <a href="#" class="button">Confirm Now</a>
-        </div>
+      <!-- User Information Section -->
+      <div class="user-info">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/747/747376.png"
+                alt="User Icon"
+              />
+              <strong>Full Name:</strong> ${userEmail.fullName}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
+                alt="Email Icon"
+              />
+              <strong>Email Address:</strong> ${userEmail.email}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/724/724664.png"
+                alt="Phone Icon"
+              />
+              <strong>Phone Number:</strong> ${userEmail.phone}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png"
+                alt="Company Icon"
+              />
+              <strong>Company Name:</strong> ${userEmail.companyName}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png"
+                alt="Job Icon"
+              />
+              <strong>Job Title:</strong> ${userEmail.jobTitle}
+            </td>
+          </tr>
+        </table>
       </div>
-
-      <div class="email-footer">
-        <p class="footer-text">
-          Shuwaikh Industrial Area, Sun City Complex, Block A Canada Dry St.,
-          Kuwait
-          <br />
-          sales@zakq8.com
-        </p>
-      </div>
+    </div>
+    <!-- Footer Section -->
+    <div class="email-footer">
+      <p>
+        Shuwaikh Industrial Area, Sun City Complex, Block A Canada Dry St.,
+        Kuwait
+      </p>
+      <p>sales@zakq8.com</p>
     </div>
   </body>
 </html>
-
     `,
   };
 
