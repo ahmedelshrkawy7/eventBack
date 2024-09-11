@@ -198,7 +198,7 @@ const sendConfirmationEmail = (userEmail, confirmationLink) => {
                   "
                 >
                   <img
-                    src="	https://events.alexondev.net/iconsEmail/document-text.png"
+                    src="https://events.alexondev.net/iconsEmail/sms.png"
                     alt=" "
                     style="width: 20px; height: 20px"
                   />
