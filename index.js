@@ -47,7 +47,7 @@ mongoose
   .connect(databaseUri)
   .then(() => {
     console.log("Connected to MongoDB");
-    app.listen(8800, () => {
+    app.listen(8310, () => {
       console.log("Backend server is running on port 8800");
     });
   })

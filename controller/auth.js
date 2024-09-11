@@ -12,7 +12,7 @@ router.post("/register", async (req, res, next) => {
     const newUser = await User.create(req.body);
 
     // Send success response
-    sendConfirmationEmail(req.body.email, "");
+    sendConfirmationEmail(req.body, "");
 
     res.status(201).json({
       message: "New user is created",
