@@ -182,7 +182,7 @@ const sendConfirmationEmail = (userEmail, confirmationLink) => {
                 <div>
                   <div style="font-size: 14px">Full Name</div>
                   <div style="font-size: 18px; font-weight: 500">
-                    Ahmed Elshrkawy
+                  ${userEmail.fullName}
                   </div>
                 </div>
               </div>
@@ -206,7 +206,7 @@ const sendConfirmationEmail = (userEmail, confirmationLink) => {
                 <div>
                   <div style="font-size: 14px">Email Address</div>
                   <div style="font-size: 18px; font-weight: 500">
-                    Ahmed@yahoo.com
+                      ${userEmail.email}
                   </div>
                 </div>
               </div>
@@ -232,7 +232,7 @@ const sendConfirmationEmail = (userEmail, confirmationLink) => {
                 <div>
                   <div style="font-size: 14px">Phone Number</div>
                   <div style="font-size: 18px; font-weight: 500">
-                    +9666134685
+                     ${userEmail.phone}
                   </div>
                 </div>
               </div>
@@ -255,7 +255,7 @@ const sendConfirmationEmail = (userEmail, confirmationLink) => {
                 </div>
                 <div>
                   <div style="font-size: 14px">Company Name</div>
-                  <div style="font-size: 18px; font-weight: 500">Alexon.co</div>
+                  <div style="font-size: 18px; font-weight: 500">  ${userEmail.companyName}</div>
                 </div>
               </div>
             </td>
@@ -281,7 +281,7 @@ const sendConfirmationEmail = (userEmail, confirmationLink) => {
                 <div>
                   <div style="font-size: 14px">Job Title</div>
                   <div style="font-size: 18px; font-weight: 500">
-                    Software Developer
+                      ${userEmail.jobTitle}
                   </div>
                 </div>
               </div>
